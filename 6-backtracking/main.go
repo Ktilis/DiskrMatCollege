@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/Ktilis/DiskrMat/common"
+	"github.com/Ktilis/DiskrMatCollege/common"
 )
 
 func main() {

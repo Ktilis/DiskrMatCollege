@@ -1,11 +1,11 @@
-module github.com/Ktilis/DiskrMat/7-workingroups-1
+module github.com/Ktilis/DiskrMatCollege/7-workingroups-1
 
 go 1.25.8
 
-replace github.com/Ktilis/DiskrMat => ../
+replace github.com/Ktilis/DiskrMatCollege => ../
 
 require (
-	github.com/Ktilis/DiskrMat v0.0.0-00010101000000-000000000000
+	github.com/Ktilis/DiskrMatCollege v0.0.0-00010101000000-000000000000
 	github.com/gin-gonic/gin v1.12.0
 	github.com/google/uuid v1.6.0
 )

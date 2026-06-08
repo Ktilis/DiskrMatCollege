@@ -8,7 +8,7 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/Ktilis/DiskrMat/common"
+	"github.com/Ktilis/DiskrMatCollege/common"
 )
 
 func main() {

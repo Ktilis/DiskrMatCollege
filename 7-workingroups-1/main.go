@@ -6,7 +6,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/Ktilis/DiskrMat/common"
+	"github.com/Ktilis/DiskrMatCollege/common"
 	"github.com/gin-gonic/gin"
 	"github.com/google/uuid"
 )
