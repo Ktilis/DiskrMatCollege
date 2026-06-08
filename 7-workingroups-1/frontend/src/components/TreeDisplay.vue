@@ -72,7 +72,7 @@ const layout = computed(() => {
   const maxX = Math.max(...nodes.map(n => n.x))
   const maxY = Math.max(...nodes.map(n => n.y))
 
-  // Shift all nodes so leftmost circle edge starts at PADDING
+  // Сдвиг всех узлов, чтобы левый край крайнего левого круга начинался с PADDING
   const offsetX = PADDING - minX + NODE_R
   nodes.forEach(n => { 
     n.x += offsetX; 
@@ -94,7 +94,7 @@ const layout = computed(() => {
       :viewBox="`0 0 ${layout.width} ${layout.height}`"
       class="tree-svg"
   >
-    <!-- Edges first (below nodes) -->
+    <!-- Сначала ребра (под узлами) -->
     <g class="edges">
       <line
           v-for="(item, i) in layout.nodes.filter(n => n.parentX !== null)"
@@ -107,7 +107,7 @@ const layout = computed(() => {
       />
     </g>
 
-    <!-- Nodes -->
+    <!-- Узлы -->
     <g
         v-for="(item, i) in layout.nodes"
         :key="'n' + i"
@@ -162,7 +162,7 @@ const layout = computed(() => {
   transition: fill 0.3s ease;
 }
 
-/* Active state */
+/* Активное состояние */
 .tree-node.is-active circle {
   fill: var(--primary, #7C4DFF);
   stroke: var(--primary-light, #b39dff);
@@ -173,7 +173,7 @@ const layout = computed(() => {
   fill: #fff;
 }
 
-/* Final state */
+/* Конечное состояние */
 .tree-node.is-final circle {
   fill: var(--accent, #ff5252);
   stroke: #ff8a80;

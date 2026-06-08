@@ -36,7 +36,7 @@ const fetchTree = async () => {
     finalNodeVal.value = null
     searchFinished.value = false
   } catch (error) {
-    console.error('Error fetching tree:', error)
+    console.error('Ошибка при получении дерева:', error)
   }
 }
 
@@ -70,7 +70,7 @@ const startSearch = async () => {
     
     searchFinished.value = true
   } catch (error) {
-    console.error('Error during search:', error)
+    console.error('Ошибка во время поиска:', error)
   } finally {
     isSearching.value = false
   }
@@ -82,14 +82,14 @@ onMounted(fetchTree)
 <template>
   <div class="app-container">
     <header>
-      <h1>Visual Tracking Search</h1>
+      <h1>Визуализация поиска</h1>
       <div class="controls">
         <div class="input-group">
-          <label>Target Value:</label>
+          <label>Искомое значение:</label>
           <input type="number" v-model="targetValue" :disabled="isSearching" />
         </div>
-        <button @click="startSearch" :disabled="isSearching" class="btn-search">Search</button>
-        <button @click="fetchTree" :disabled="isSearching" class="btn-reset">New Tree</button>
+        <button @click="startSearch" :disabled="isSearching" class="btn-search">Поиск</button>
+        <button @click="fetchTree" :disabled="isSearching" class="btn-reset">Новое дерево</button>
       </div>
     </header>
 
@@ -102,7 +102,7 @@ onMounted(fetchTree)
           :is-finished="searchFinished"
         />
       </div>
-      <div v-else class="loading">Generating tree...</div>
+      <div v-else class="loading">Генерация дерева...</div>
     </main>
   </div>
 </template>

@@ -11,13 +11,13 @@ import (
 	"github.com/google/uuid"
 )
 
-// TreeSession stores the tree and the last access time
+// TreeSession хранит дерево и время последнего доступа
 type TreeSession struct {
 	Tree       *common.TreeNode
 	LastAccess time.Time
 }
 
-// TreeStore stores TreeSession by session ID
+// TreeStore хранит TreeSession по ID сессии
 var TreeStore = sync.Map{}
 
 const SessionTimeout = 60 * time.Minute
@@ -31,17 +31,17 @@ func main() {
 	r := gin.Default()
 	rand.Seed(time.Now().UnixNano())
 
-	// Start background cleanup goroutine
+	// Запуск фоновой горутины для очистки
 	go cleanupExpiredSessions()
 
-	// API Endpoints
+	// Эндпоинты
 	api := r.Group("/api")
 	{
 		api.GET("/tree", handleGetTree)
 		api.POST("/search", handleSearch)
 	}
 
-	// Static files from frontend/dist
+	// Статические файлы из frontend/dist
 	r.StaticFS("/assets", http.Dir("./frontend/dist/assets"))
 	r.StaticFile("/", "./frontend/dist/index.html")
 	r.NoRoute(func(c *gin.Context) {
@@ -74,11 +74,11 @@ func handleSearch(c *gin.Context) {
 
 	val, ok := TreeStore.Load(req.SessionID)
 	if !ok {
-		c.JSON(http.StatusNotFound, gin.H{"error": "Session not found"})
+		c.JSON(http.StatusNotFound, gin.H{"error": "Сессия не найдена"})
 		return
 	}
 	session := val.(*TreeSession)
-	session.LastAccess = time.Now() // Update access time
+	session.LastAccess = time.Now() // Обновление времени доступа
 	TreeStore.Store(req.SessionID, session)
 
 	var path []int
@@ -120,7 +120,7 @@ func generateRandomTree(n int) *common.TreeNode {
 		nodes[i] = &common.TreeNode{Val: val}
 	}
 
-	// Randomly connect nodes to form a binary tree
+	// Случайное соединение узлов для формирования бинарного дерева
 	for i := 1; i < n; i++ {
 		for {
 			parentIdx := rand.Intn(i)
