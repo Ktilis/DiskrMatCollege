@@ -1,0 +1,7 @@
+services:
+  app:
+    build:
+      context: ..
+      dockerfile: 7-workingroups-1/Dockerfile
+    ports:
+      - "8080:8080"
